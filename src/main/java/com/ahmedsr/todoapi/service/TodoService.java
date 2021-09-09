@@ -21,6 +21,7 @@ public class TodoService {
     public TodoService(){
 
     }
+
     /**
      * Get All todos
      * @return List of todos
@@ -29,10 +30,19 @@ public class TodoService {
         return  iTodoRepository.findAll();
     }
 
+    /**
+     *
+     * @param todo
+     * @return Todo object
+     */
     public Todo save(Todo todo){
       return iTodoRepository.insert(todo);
     }
 
+    /**
+     *
+     * @param id
+     */
     public void delete(String id){
         iTodoRepository.deleteById(id);
     }

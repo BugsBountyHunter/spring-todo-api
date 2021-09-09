@@ -23,6 +23,7 @@ public class TodoController {
         this.todoService = todoService;
     }
 
+
     /**
      * Get all todos.
      * @return List of todos and status code.
@@ -33,11 +34,22 @@ public class TodoController {
         return new ResponseEntity<>(todos, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param todo
+     * @return create a new todo information with status code.
+     */
     @PostMapping(value = {"","/"})
     public ResponseEntity<Todo> createNewTodo(@Validated @RequestBody Todo todo){
         Todo newTodo = todoService.save(todo);
         return new ResponseEntity<>(newTodo, HttpStatus.CREATED);
     }
+
+    /**
+     *
+     * @param id
+     * @return deletion status code.
+     */
     @DeleteMapping(value = {"/{id}"})
     public ResponseEntity<Void> deleteTodo(@Validated @PathVariable  String id){
         todoService.delete(id);
